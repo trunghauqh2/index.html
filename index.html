@@ -1,0 +1,223 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Quản Lý Tài Liệu Chuyên Ngành</title>
+    <style>
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background-color: #f4f6f9;
+            margin: 0;
+            padding: 20px;
+            color: #333;
+        }
+        .container {
+            max-width: 800px;
+            margin: 0 auto;
+            background: #ffffff;
+            padding: 30px;
+            border-radius: 12px;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.05);
+        }
+        h1 {
+            text-align: center;
+            color: #1e3a8a;
+            margin-bottom: 30px;
+            font-size: 24px;
+        }
+        .node {
+            margin: 10px 0;
+            padding: 5px 0;
+        }
+        .btn {
+            background-color: #f3f4f6;
+            color: #1f2937;
+            border: 1px solid #e5e7eb;
+            padding: 12px 18px;
+            font-size: 16px;
+            font-weight: 600;
+            cursor: pointer;
+            width: 100%;
+            text-align: left;
+            border-radius: 8px;
+            transition: all 0.3s ease;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        .btn:hover {
+            background-color: #e5e7eb;
+            border-color: #d1d5db;
+        }
+        .btn-main {
+            background-color: #1e3a8a;
+            color: white;
+            font-size: 18px;
+        }
+        .btn-main:hover {
+            background-color: #1d4ed8;
+        }
+        .btn::after {
+            content: '▶';
+            font-size: 12px;
+            transition: transform 0.3s;
+        }
+        .active::after {
+            transform: rotate(90deg);
+        }
+        .branch-level-1 {
+            display: none;
+            padding-left: 25px;
+            border-left: 3px dashed #1e3a8a;
+            margin-top: 5px;
+        }
+        .branch-level-2 {
+            display: none;
+            padding-left: 25px;
+            border-left: 3px dashed #10b981;
+            margin-top: 5px;
+        }
+        .file-list {
+            list-style: none;
+            padding: 0;
+            margin: 0;
+        }
+        .file-item {
+            background-color: #f9fafb;
+            border: 1px solid #f3f4f6;
+            padding: 10px 15px;
+            margin: 5px 0;
+            border-radius: 6px;
+            font-size: 14px;
+            color: #4b5563;
+            display: flex;
+            align-items: center;
+        }
+        .file-item::before {
+            content: '📄';
+            margin-right: 10px;
+        }
+    </style>
+</head>
+<body>
+
+<div class="container">
+    <h1>HỆ THỐNG CÂY THƯ MỤC TÀI LIỆU CHUYÊN NGÀNH</h1>
+
+    <!-- GỐC SỐ 1: TÊN MÔN CHUYÊN NGÀNH HỌC KÌ 2 -->
+    <div class="node">
+        <button class="btn btn-main" onclick="toggleBranch('hk2-branch', this)">1. Danh mục môn chuyên ngành học kì 2</button>
+        
+        <!-- RẼ NHÁNH CẤP 1: 5 MÔN HỌC -->
+        <div id="hk2-branch" class="branch-level-1">
+            
+            <!-- MÔN 1 -->
+            <div class="node">
+                <button class="btn" onclick="toggleBranch('mon1-files', this)">Môn 1: Hệ cơ sở dữ liệu (SQL Server)</button>
+                <div id="mon1-files" class="branch-level-2">
+                    <ul class="file-list">
+                        <li class="file-item">Chương 0 Mở đầu.pdf</li>
+                        <li class="file-item">Chương 1 Hướng dẫn thực hành.pdf</li>
+                        <li class="file-item">Chương 1 - HDTH - Phân 2 - v1.0.pdf</li>
+                        <li class="file-item">Chương 2 - HDTH - v2.0.pdf</li>
+                        <li class="file-item">Chương 3 - HDTH - v1.0.pdf</li>
+                        <li class="file-item">Chương 4 - Bài giảng v2.0.pdf</li>
+                        <li class="file-item">Chương 4 - Hướng dẫn thực hành v1.0.pdf</li>
+                        <li class="file-item">Chương 5 - Bài giảng v1.0.pdf</li>
+                        <li class="file-item">Chương 5 - Bài giảng v1.0_2.pdf</li>
+                    </ul>
+                </div>
+            </div>
+
+            <!-- MÔN 2 -->
+            <div class="node">
+                <button class="btn" onclick="toggleBranch('mon2-files', this)">Môn 2: Cấu trúc dữ liệu và giải thuật & Phương pháp lập trình</button>
+                <div id="mon2-files" class="branch-level-2">
+                    <ul class="file-list">
+                        <li class="file-item">Đề cương Phương pháp lập trình (Thi vấn đáp).pdf</li>
+                        <li class="file-item">Cấu trúc dữ liệu và giải thuật - Giáo trình Thầy Lôi ĐHQGHN.pdf</li>
+                        <li class="file-item">Sách cấu trúc dữ liệu và giải thuật (Tiếng anh).pdf</li>
+                        <li class="file-item">Bài giảng chương 1 Mở đầu.pdf</li>
+                        <li class="file-item">Bài giảng Cấu trúc rẽ nhánh.pdf</li>
+                        <li class="file-item">Bài giảng Cấu trúc lặp.pdf</li>
+                        <li class="file-item">Bài giảng Hàm.pdf</li>
+                        <li class="file-item">Bài giảng Hàm_2.pdf</li>
+                        <li class="file-item">Bài giảng chương 2 Đệ quy.pdf</li>
+                        <li class="file-item">Bài giảng Cấu trúc dữ liệu có sẵn & Cài đặt thủ công.pptx</li>
+                        <li class="file-item">Bài giảng chương 5 Ngăn xếp.pdf</li>
+                        <li class="file-item">Bài giảng chương 4 Hàng đợi.pdf</li>
+                        <li class="file-item">Bài giảng chương 6 Cây.pdf</li>
+                        <li class="file-item">Bài giảng Cấu trúc dữ liệu Tree.pptx</li>
+                    </ul>
+                </div>
+            </div>
+
+            <!-- MÔN 3 -->
+            <div class="node">
+                <button class="btn" onclick="toggleBranch('mon3-files', this)">Môn 3: Trí tuệ nhân tạo (AI)</button>
+                <div id="mon3-files" class="branch-level-2">
+                    <ul class="file-list">
+                        <li class="file-item">Chương 1 Biểu diễn không gian trạng thái.pdf</li>
+                        <li class="file-item">Chương 5 Tri thức & Suy diễn.pdf</li>
+                    </ul>
+                </div>
+            </div>
+
+            <!-- MÔN 4 -->
+            <div class="node">
+                <button class="btn" onclick="toggleBranch('mon4-files', this)">Môn 4: Công nghệ phần mềm & DevOps</button>
+                <div id="mon4-files" class="branch-level-2">
+                    <ul class="file-list">
+                        <li class="file-item">Chương 2-Quy trình phát triển phần mềm.pdf</li>
+                        <li class="file-item">Chương 3 - Quản lý yêu cầu và lập kế hoạch sản phẩm.pdf</li>
+                        <li class="file-item">Chương 4_ Phát triển, Tích hợp và Đảm bảo Chất lượng.pdf</li>
+                        <li class="file-item">Chương 5_ Triển khai, Bảo trì và DevOps.pdf</li>
+                        <li class="file-item">Hướng dẫn thực hành GitHub.pdf</li>
+                    </ul>
+                </div>
+            </div>
+
+            <!-- MÔN 5 -->
+            <div class="node">
+                <button class="btn" onclick="toggleBranch('mon5-files', this)">Môn 5: Toán chuyên ngành (Toán rời rạc)</button>
+                <div id="mon5-files" class="branch-level-2">
+                    <ul class="file-list">
+                        <li class="file-item">Chương 4-Logic-p1.pdf</li>
+                        <li class="file-item">Chương 4-Logic-p2.pdf</li>
+                    </ul>
+                </div>
+            </div>
+
+            <!-- MÔN BỔ TRỢ (ĐÃ TÁCH KHỎI CHUYÊN NGÀNH THEO Ý ÔNG) -->
+            <div class="node">
+                <button class="btn" onclick="toggleBranch('mon6-files', this)">Môn bổ trợ: Lập trình Python căn bản</button>
+                <div id="mon6-files" class="branch-level-2">
+                    <ul class="file-list">
+                        <li class="file-item">Bài giảng Python cơ bản.pptx</li>
+                        <li class="file-item">Bài giảng Mảng.pdf</li>
+                        <li class="file-item">Bài giảng OOP.pptx</li>
+                        <li class="file-item">Bài giảng Xử lý ngoại lệ.pptx</li>
+                    </ul>
+                </div>
+            </div>
+
+        </div>
+    </div>
+</div>
+
+<script>
+    function toggleBranch(branchId, button) {
+        var branch = document.getElementById(branchId);
+        if (branch.style.display === "block") {
+            branch.style.display = "none";
+            button.classList.remove("active");
+        } else {
+            branch.style.display = "block";
+            button.classList.add("active");
+        }
+    }
+</script>
+
+</body>
+</html>
